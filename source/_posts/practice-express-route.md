@@ -6,6 +6,8 @@ tags:
 
 最近尝试学习REST API的时候,拜读了一篇博客,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.
 
+<!--more-->
+
 安哥说要善于总结与反思,尝试着把所思所得记录下来.这也是开始用hexo的理由.
 
 第一步是问谷歌,看了这个博客[Organizing your app routes with the Express 4 Router](https://www.terlici.com/2014/09/29/express-router.html),一眼看过去是以前用过的操作,但是还是耐着性子看了下去,把一些新的感悟总结一下:
