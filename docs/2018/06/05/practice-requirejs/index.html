@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="做软件工程课设闷死了,学点新东西自娱自乐
+其实之前在公司闲着的时候已经看过一些文档了,但是果然没有实际自己搭建过是很难理解并且使用的.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="kobako">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="requireJs实践"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Kobako"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>requireJs实践 - Kobako</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/kobako-blog/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/kobako-blog/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/kobako-blog/archives">
+                    历史文章
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/kobako-blog/"><i class="logo-icon fa fa-apple" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/kobako-blog/2018/06/05/practice-requirejs/">
+                requireJs实践
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-06-05</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>做软件工程课设闷死了,学点新东西自娱自乐</p>
+<p>其实之前在公司闲着的时候已经看过一些文档了,但是果然没有实际自己搭建过是很难理解并且使用的.</p>
+<a id="more"></a>
+<p>首先最简单的用法就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script data-main=&quot;scripts/main.js&quot; src=&quot;scripts/require.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这样一个引用会自动设置好requireJs的baseUrl</p>
+<blockquote>
+<p>baseUrl: 是requreJs寻找js文件的根目录</p>
+</blockquote>
+<h4 id="官方推荐的目录结构以及用法"><a href="#官方推荐的目录结构以及用法" class="headerlink" title="官方推荐的目录结构以及用法"></a>官方推荐的目录结构以及用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">www/</span><br><span class="line"> index.html</span><br><span class="line"> js/</span><br><span class="line">  app/</span><br><span class="line">    sub.js</span><br><span class="line">  lib/</span><br><span class="line">    jquery.js</span><br><span class="line">    canvas.js</span><br><span class="line"> app.js</span><br><span class="line"> require.js</span><br></pre></td></tr></table></figure>
+<p>可以看到lib里面是引入的外部库,app里面是自己写的js</p>
+<p><code>index.html</code>里面是<code>&lt;script data-main=&quot;js/app.js&quot; src=&quot;js/require.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>然后是<code>app.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">requirejs.config(&#123;</span><br><span class="line">    <span class="comment">//By default load any module IDs from js/lib</span></span><br><span class="line">    baseUrl: <span class="string">'js/lib'</span>,</span><br><span class="line">    <span class="comment">//except, if the module ID starts with "app",</span></span><br><span class="line">    <span class="comment">//load it from the js/app directory. paths</span></span><br><span class="line">    <span class="comment">//config is relative to the baseUrl, and</span></span><br><span class="line">    <span class="comment">//never includes a ".js" extension since</span></span><br><span class="line">    <span class="comment">//the paths config could be for a directory.</span></span><br><span class="line">    paths: &#123;</span><br><span class="line">        app: <span class="string">'../app'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start the main app logic.</span></span><br><span class="line">requirejs([<span class="string">'jquery'</span>, <span class="string">'canvas'</span>, <span class="string">'app/sub'</span>],</span><br><span class="line"><span class="function"><span class="keyword">function</span>   (<span class="params">$,        canvas,   sub</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//jQuery, canvas and the app/sub module are all</span></span><br><span class="line">    <span class="comment">//loaded and can be used here now.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看到在paths里面写了app的path,这样在引用的时候,以app开头的引用就会自动引用这个前缀</p>
+<h4 id="如何引用传统库"><a href="#如何引用传统库" class="headerlink" title="如何引用传统库"></a>如何引用传统库</h4><p>在<code>requirejs.config</code>里使用shim属性</p>
+<p>主要原理是…把传统引用放到requireJs引用之前就好了</p>
+<p>使用里面的exports属性定义引用的全局变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">requirejs.config(&#123;</span><br><span class="line">    <span class="comment">//Remember: only use shim config for non-AMD scripts,</span></span><br><span class="line">    <span class="comment">//scripts that do not already call define(). The shim</span></span><br><span class="line">    <span class="comment">//config will not work correctly if used on AMD scripts,</span></span><br><span class="line">    <span class="comment">//in particular, the exports and init config will not</span></span><br><span class="line">    <span class="comment">//be triggered, and the deps config will be confusing</span></span><br><span class="line">    <span class="comment">//for those cases.</span></span><br><span class="line">    shim: &#123;</span><br><span class="line">        <span class="string">'backbone'</span>: &#123;</span><br><span class="line">            <span class="comment">//These script dependencies should be loaded before loading</span></span><br><span class="line">            <span class="comment">//backbone.js</span></span><br><span class="line">            deps: [<span class="string">'underscore'</span>, <span class="string">'jquery'</span>],</span><br><span class="line">            <span class="comment">//Once loaded, use the global 'Backbone' as the</span></span><br><span class="line">            <span class="comment">//module value.</span></span><br><span class="line">            exports: <span class="string">'Backbone'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'underscore'</span>: &#123;</span><br><span class="line">            exports: <span class="string">'_'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'foo'</span>: &#123;</span><br><span class="line">            deps: [<span class="string">'bar'</span>],</span><br><span class="line">            exports: <span class="string">'Foo'</span>,</span><br><span class="line">            init: <span class="function"><span class="keyword">function</span> (<span class="params">bar</span>) </span>&#123;</span><br><span class="line">                <span class="comment">//Using a function allows you to call noConflict for</span></span><br><span class="line">                <span class="comment">//libraries that support it, and do other cleanup.</span></span><br><span class="line">                <span class="comment">//However, plugins for those libraries may still want</span></span><br><span class="line">                <span class="comment">//a global. "this" for the function will be the global</span></span><br><span class="line">                <span class="comment">//object. The dependencies will be passed in as</span></span><br><span class="line">                <span class="comment">//function arguments. If this function returns a value,</span></span><br><span class="line">                <span class="comment">//then that value is used as the module export value</span></span><br><span class="line">                <span class="comment">//instead of the object found via the 'exports' string.</span></span><br><span class="line">                <span class="comment">//Note: jQuery registers as an AMD module via define(),</span></span><br><span class="line">                <span class="comment">//so this will not work for jQuery. See notes section</span></span><br><span class="line">                <span class="comment">//below for an approach for jQuery.</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.Foo.noConflict();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Then, later in a separate file, call it 'MyModel.js', a module is</span></span><br><span class="line"><span class="comment">//defined, specifying 'backbone' as a dependency. RequireJS will use</span></span><br><span class="line"><span class="comment">//the shim config to properly load 'backbone' and give a local</span></span><br><span class="line"><span class="comment">//reference to this module. The global Backbone will still exist on</span></span><br><span class="line"><span class="comment">//the page too.</span></span><br><span class="line">define([<span class="string">'backbone'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">Backbone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Backbone.Model.extend(&#123;&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    将就用来写一下技术博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近文章</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/kobako-blog/2018/06/05/practice-requirejs/">requireJs实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/kobako-blog/2018/06/04/practice-express-route/">express route实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/kobako-blog/2018/06/03/hello-hexo/">hello-hexo</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/zhuobinggang">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zhuobinggang@gmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @kobako All right reserved
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/kobako-blog/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

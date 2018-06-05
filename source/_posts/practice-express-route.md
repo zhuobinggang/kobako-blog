@@ -1,10 +1,10 @@
 ---
-title: practice-express-route
+title: express route实践
 date: 2018-06-04 22:31:48
 tags:
 ---
 
-最近尝试学习REST API的时候,拜读了一篇博客,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.
+最近尝试学习REST API的时候,拜读了一篇博客[Build Node.js RESTful APIs in 10 Minutes](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd),里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.
 
 <!--more-->
 
@@ -67,3 +67,16 @@ app.use('/',router)
 
 #### Summary
 总结一下吧,用路由还是得像以前那样用,不过在设计REST API的时候,别忘了可以用`route`方法秀一波操作
+
+
+#### 附录
+在这里不时更新一些关于目录结构的博文
+
+
+[How I Structure Restful APIs using Express4](http://www.codekitchen.ca/guide-to-structuring-and-building-a-restful-api-using-express-4/)
+
+这个目录结构是这样的
+
+![目录结构](http://www.codekitchen.ca/content/images/2015/06/Screen-Shot-2015-06-15-at-12-48-42-AM.png)
+
+分开auth,models,routes等目录.这里的routes目录让人反思是不是一定要这样写啊,结合10分钟restful那篇文章来看的话,再分出一个controller目录用来储存主要逻辑,然后在routes里面调用他们可能会比较好

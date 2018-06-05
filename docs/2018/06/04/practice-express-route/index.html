@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="最近尝试学习REST API的时候,拜读了一篇博客,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.">
+        <meta name="description" content="最近尝试学习REST API的时候,拜读了一篇博客Build Node.js RESTful APIs in 10 Minutes,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.">
     
 
     <!--Author-->
@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="practice-express-route"/>
+        <meta property="og:title" content="express route实践"/>
     
 
     <!--Open Graph Description-->
@@ -42,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>practice-express-route - Kobako</title>
+    <title>express route实践 - Kobako</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -123,7 +123,7 @@
     <div class="post-header">
         <h1 class="title">
             <a href="/kobako-blog/2018/06/04/practice-express-route/">
-                practice-express-route
+                express route实践
             </a>
         </h1>
         <div class="post-info">
@@ -141,7 +141,7 @@
         
 
         <!-- Post Content -->
-        <p>最近尝试学习REST API的时候,拜读了一篇博客,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.</p>
+        <p>最近尝试学习REST API的时候,拜读了一篇博客<a href="https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd" target="_blank" rel="noopener">Build Node.js RESTful APIs in 10 Minutes</a>,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.</p>
 <a id="more"></a>
 <p>安哥说要善于总结与反思,尝试着把所思所得记录下来.这也是开始用hexo的理由.</p>
 <p>第一步是问谷歌,看了这个博客<a href="https://www.terlici.com/2014/09/29/express-router.html" target="_blank" rel="noopener">Organizing your app routes with the Express 4 Router</a>,一眼看过去是以前用过的操作,但是还是耐着性子看了下去,把一些新的感悟总结一下:</p>
@@ -161,6 +161,11 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router = <span class="built_in">require</span>(<span class="string">'express'</span>).Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/tasks'</span>,todoList.list_all_tasks)</span><br><span class="line">router.post(<span class="string">'/tasks'</span>,todoList.create_a_task)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/tasks/:taskId'</span>,todoList.read_a_task)</span><br><span class="line">router.put(<span class="string">'/tasks/:taskId'</span>,todoList.update_a_task)</span><br><span class="line">router.delete(<span class="string">'/tasks/:taskId'</span>,todoList.delete_a_task)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>,router)</span><br></pre></td></tr></table></figure>
 <p>果然很多冗余,不过能用route方法减少冗余也<code>只限</code>REST API这种操作了,因为重复的主要是url</p>
 <h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>总结一下吧,用路由还是得像以前那样用,不过在设计REST API的时候,别忘了可以用<code>route</code>方法秀一波操作</p>
+<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4><p>在这里不时更新一些关于目录结构的博文</p>
+<p><a href="http://www.codekitchen.ca/guide-to-structuring-and-building-a-restful-api-using-express-4/" target="_blank" rel="noopener">How I Structure Restful APIs using Express4</a></p>
+<p>这个目录结构是这样的</p>
+<p><img src="http://www.codekitchen.ca/content/images/2015/06/Screen-Shot-2015-06-15-at-12-48-42-AM.png" alt="目录结构"></p>
+<p>分开auth,models,routes等目录.这里的routes目录让人反思是不是一定要这样写啊,结合10分钟restful那篇文章来看的话,再分出一个controller目录用来储存主要逻辑,然后在routes里面调用他们可能会比较好</p>
 
     </div>
 
@@ -198,7 +203,11 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/kobako-blog/2018/06/04/practice-express-route/">practice-express-route</a>
+                <a class="footer-post" href="/kobako-blog/2018/06/05/practice-requirejs/">requireJs实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/kobako-blog/2018/06/04/practice-express-route/">express route实践</a>
             </li>
             
             <li>
