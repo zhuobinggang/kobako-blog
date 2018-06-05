@@ -139,26 +139,8 @@
     
         <div class="content">
             <p>最近尝试学习REST API的时候,拜读了一篇博客,里面的代码是用express写的.其中一段路由分发的代码完全颠覆了我的认识,让我重新思考怎样才是最优雅的路由实现方式.</p>
-<p>安哥说要善于总结与反思,尝试着把所思所得记录下来.这也是开始用hexo的理由.</p>
-<p>第一步是问谷歌,看了这个博客<a href="https://www.terlici.com/2014/09/29/express-router.html" target="_blank" rel="noopener">Organizing your app routes with the Express 4 Router</a>,一眼看过去是以前用过的操作,但是还是耐着性子看了下去,把一些新的感悟总结一下:</p>
-<ol>
-<li>app.use的是路由</li>
-<li>路由里面可以use新的路由,理论上是可以无限嵌套的</li>
-<li>为了保持入口文件简单,只在里面引用一个引用了所有路由的路由</li>
-<li>可以在router里使用middleware</li>
-<li>中间件跟路由处理方法的主要区别是路由参数里多一个next,使用上没多大区别(这也是express坑的地方)</li>
-</ol>
-<p>现在大部分express应用都是用以上写法,所以我们可以看到这样的目录结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">controllers/</span><br><span class="line">  animals.js</span><br><span class="line">  cars.js</span><br><span class="line">  index.js</span><br><span class="line">models/</span><br><span class="line">public/</span><br><span class="line">tests/</span><br><span class="line">app.js</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
-<p>在<code>app.js</code>里面用一句话引用路由<code>app.use(require(&#39;./controllers&#39;))</code></p>
-<p>其实这样写也挺好的,但是之前觉得很秀的写法像这样:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.route(<span class="string">'/tasks'</span>)</span><br><span class="line">  .get(todoList.list_all_tasks)</span><br><span class="line">  .post(todoList.create_a_task);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.route(<span class="string">'/tasks/:taskId'</span>)</span><br><span class="line">  .get(todoList.read_a_task)</span><br><span class="line">  .put(todoList.update_a_task)</span><br><span class="line">  .delete(todoList.delete_a_task);</span><br></pre></td></tr></table></figure>
-<p>我猜如果我来实现的话会像是这样</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router = <span class="built_in">require</span>(<span class="string">'express'</span>).Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/tasks'</span>,todoList.list_all_tasks)</span><br><span class="line">router.post(<span class="string">'/tasks'</span>,todoList.create_a_task)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/tasks/:taskId'</span>,todoList.read_a_task)</span><br><span class="line">router.put(<span class="string">'/tasks/:taskId'</span>,todoList.update_a_task)</span><br><span class="line">router.delete(<span class="string">'/tasks/:taskId'</span>,todoList.delete_a_task)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>,router)</span><br></pre></td></tr></table></figure>
-<p>果然很多冗余,不过能用route方法减少冗余也<code>只限</code>REST API这种操作了,因为重复的主要是url</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>总结一下吧,用路由还是得像以前那样用,不过在设计REST API的时候,别忘了可以用<code>route</code>方法秀一波操作</p>
-
         </div>
+        <a href="/kobako-blog/2018/06/04/practice-express-route/" class="read-more">阅读全文</a>
     
 
 </div>
